@@ -1,0 +1,86 @@
+<html>
+		<head>
+		<title>HOW TO LEARN ENGLISH LETTERS</title>
+		</head>
+	<body>
+      <h1>Learn the English letters</h1>
+	  <label>Number of letters : </label>
+	  <input type="number" id="n1" min=0 max=26>
+	  <input type="submit" id="s1" value="Generate">
+	  <div id="d1"></div>
+	  <img src="" id="im" class="jjj" width=150 hight=250>
+	  
+	  <script>
+	  var btn1=document.getElementById("s1");
+	  var div1=document.getElementById("d1");
+	  characters=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Yy","Zz"];
+	  img = ['A.jpg','B.jpg','C.jpg','D.jpg','E.jpg','F.jpg','G.jpg','H.jpj','I.jpg','J.jpg','K.jpg','L.jpg','M.jpg','N.jpg','O.jpg','p.jpg','Q.jpg','R.jpg','S.jpg','T.jpg','U.jpg','V.jpg','W.jpg','X.jpg','Y.jpg','Z.jpg'];
+	  
+            btn1.addEventListener("click",function (){
+            var btngen=document.getElementById('n1').value;
+           btngenerate(btngen);
+         });
+		 function btngenerate(btngen)
+		 {div1.textContent="";
+		  document.images[0].src="";
+		 for (var i=0 ; i<btngen ; i++)
+		 {
+		 var rand=  Math.floor(Math.random() * (25 - 0+ 1) + 0);
+	   	//var v=document.getElementById("d1");
+		div1.innerHTML+="<input type=button value='"+characters[rand]+"' id='bott' class='cla'>";
+		 var bot=document.getElementById("bott");
+		bot.addEventListener("click",function(e){displ(rand);});
+	 
+	  
+	  
+	
+	  }
+	  }
+	  
+	  var r=this.rand;
+	 function displ(r)
+	 {  
+
+	document.images[0].src=img[r];
+	 
+	  //console.log(imgs[r]);}
+		//var h= ".jpg";
+		//document.images[0].src=e.target.textContent+h;
+		 //
+		//document.getElementByClassName("jjj")[0].src=imgs[rand];
+		//console.log(imgs[rand]);
+	 }
+	  function storage_inlocal(target,date,type){
+			this.t=target;
+			this.d=date;
+			this.ty=type;
+}
+		window.addEventListener("ld",function(e){
+ var sl=storage_inlocal(e.target,e.data,e.type);
+ var a=[];
+  if(localStorage.key!="ld")
+ a=localStorage.getItem("ld");
+ else
+ {
+    a.push(sl);
+	localStorage.setItem("ld",a);
+ }
+ })
+ window.addEventListener("unld",function(e){
+ var us=storage_inlocal(e.target,e.data,e.type);
+ var ar=[];
+  if(localStorage.key!="unld")
+ ar=localStorage.getItem("unld");
+ else
+ {
+    ar.push(us);
+	localStorage.setItem("unld",ar);
+ }
+ })
+
+	        
+		 
+    
+	  </script>
+	<body>
+</html>
