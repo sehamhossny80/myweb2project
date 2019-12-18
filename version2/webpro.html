@@ -1,1 +1,150 @@
+<html>
+		<head>
+		<title>HOW TO LEARN ENGLISH LETTERS</title>
+		</head>
+	<body>
+      <h1>Learn the English letters</h1>
+	  <label>Number of letters : </label>
+	  <input type="number" id="n1" min=0 max=26>
+	  <input type="submit" id="s1" value="Generate">
+	  <div id="d1"></div>
+	  <img src="" id="im" class="jjj" width=150 hight=250>
+	  <script src="jquery3.2.1.min.js"></script>
+	  <script>
+	  var btn1=document.getElementById("s1");
+	  var div1=document.getElementById("d1");
+	  characters=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Yy","Zz"];
+	  img = ['A.jpg','B.jpg','C.jpg','D.jpg','E.jpg','F.jpg','G.jpg','H.jpj','I.jpg','J.jpg','K.jpg','L.jpg','M.jpg','N.jpg','O.jpg','p.jpg','Q.jpg','R.jpg','S.jpg','T.jpg','U.jpg','V.jpg','W.jpg','X.jpg','Y.jpg','Z.jpg'];
+	  
+            btn1.addEventListener("click",function (){
+            var btngen=document.getElementById('n1').value;
+           btngenerate(btngen);
+         });
+		 function btngenerate(btngen)
+		 {div1.textContent="";
+		  document.images[0].src="";
+		 for (var i=0 ; i<btngen ; i++)
+		 {
+		 var rand=  Math.floor(Math.random() * (25 - 0+ 1) + 0);
+	   	//var v=document.getElementById("d1");
+		div1.innerHTML+="<input type=button value='"+characters[rand]+"' onclick='display("+rand+")' id='bott' class='cla'>";
+		// var bot=document.getElementById("bott");
+		//bot.addEventListener("click",function(e){display(rand);});
+	 
+	 }
+	  }
+	  
+	 // var r=this.rand;
+	 function display(r)
+	 {  
 
+	document.images[0].src=img[r];
+	 
+	 }
+	  function storage_inlocal(type,target,date){
+			this.type=type;
+			this.target=target;
+			this.date=date;
+			
+}
+var arr2=[];
+window.addEventListener("load",function(e){
+ var a=new storage_inlocal(e.type,e.target,e.date= new Date);
+ 
+  if(localStorage.key!="load")
+  {
+  arr2.push(a);
+  localStorage.setItem("load",JSON.stringify(arr2));
+  }
+ else
+ {
+ arr2=JSON.parse(localStorage.getItem("load"));
+    arr2.push(a);
+	localStorage.setItem("load",JSON.stringify(arr2));
+ }
+ });
+ var arr3=[];
+		window.addEventListener("unload",function(e){
+ var aa=new storage_inlocal(e.type,e.target,e.date= new Date);
+ 
+  if(localStorage.key!="unload")
+  {
+  arr3.push(aa);
+  localStorage.setItem("unload",JSON.stringify(arr3));
+  }
+ else
+ {
+ arr3=JSON.parse(localStorage.getItem("unload"));
+    arr3.push(aa);
+	localStorage.setItem("unload",JSON.stringify(arr3));
+ }
+ });
+  
+ 
+ 
+
+//var arunload=JSON.parse(localStorage.getItem('unload'));
+if (localStorage.length >0)
+{
+for (let i=0 ; i<localStorage.length ; i++)
+{
+let key=localStorage.key(i);
+let value=localStorage.getItem(key);
+//console.log(key,value);
+}
+}
+
+
+
+
+function fun(){
+
+$.ajax({
+"type":"POST",
+"url":"pv2.php",
+"data":{"load":JSON.stringify($arr2)},
+"success":function(response)
+{console.log(response);
+//console.log(typeof response);
+}
+//var x=JSON.parse(response);
+//console.log(x);
+});
+}
+function fun2(){
+
+$.ajax({
+"type":"POST",
+"url":"pv2.php",
+"data":{"unload":JSON.stringify($arr3)},
+"success":function(response)
+{console.log(response);
+//console.log(typeof response);
+}
+//var x=JSON.parse(response);
+//console.log(x);
+});
+}
+
+
+function func3()
+{
+$.ajax({
+"type":"GET",
+"url":"pv2.php",
+"data":{"t":""},
+"success": function(response)
+{if (response)
+{var rdata=JSON.parse(response);
+console.log(rdata);}
+}
+});
+}
+
+
+	       
+		 
+    
+	  </script>
+	<body>
+</html>
