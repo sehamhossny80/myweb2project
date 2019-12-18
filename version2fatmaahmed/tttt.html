@@ -1,1 +1,286 @@
+<html>
+<head>
+<title></title>
+   
+ </head>
+ <body>
+ <pre>
+Number of Letters <input type="number" class="a"  id="aa" min="1" max="26" >  <input type="button" class="b" id="bb" value="character"   > <br>
+</pre>
+ <table id="p"> </table>
+ <img src=" " name="AA"  id="A">   
+<script src="jquery3.2.1.min.js"></script> 
+ <script>
+var m=["A.gif","B.gif","C.gif","D.gif","E.gif","F.gif","G.gif","H.gif","I.gif","J.gif","K.gif","L.gif","M.gif","N.gif","O.gif","P.gif","Q.gif","R.gif","S.gif","T.gif","U.gif","W.gif","X.gif","Y.gif","Z.gif"];
 
+var l=["A", "B" , "C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];    
+
+ var butto=0;
+ var character=0;
+         
+var x =document.getElementsByClassName("b")[0]; 
+var y=document.getElementsByClassName("a")[0];
+x.addEventListener("click",function(e)  {g(y.value) ; 
+butto=butto+1;
+           var create=new template(e.target,e.type,e.date=new Date());
+            if(localStorage.key!="create")
+             localStorage.setItem("create",create);
+             else
+             {
+              var xxx=[];
+              xxx=localStorage.getItem("create");
+              xxx.push(create);
+              localStorage.setItem("create",xxx);
+             }
+
+console.log("number the char of button",butto);
+
+ }  );
+ function getRand(min, max) {
+        var r = Math.floor(Math.random() * (max - min + 1) + min);
+        return r;
+		
+		
+		
+	}
+function g(y)
+{
+		
+document.images[0].src="";
+p.textContent="";
+	
+for(var i=0;i<y;i++)
+ {
+  var pp=document.getElementById("p");
+            var w =getRand(0, 25);
+           
+            var el=document.createElement("button");
+            var cont=document.createTextNode(l[w]);
+             el.appendChild(cont);
+            pp.appendChild(el);
+           el.addEventListener("click",function(e)
+            {document.images[0].src=e.target.textContent+".gif";
+			
+			
+			   character=character+1;
+           var chh=new template(e.target,e.type,e.date=new Date());
+            if(localStorage.key!="chh")
+             localStorage.setItem("character",chh);
+             else
+             {
+              var eee=new Array();
+              eee=localStorage.getItem("character");
+              eee.push(chh);
+              localStorage.setItem("character",eee);
+             }
+         
+			
+			
+			console.log("character choice",character );
+			
+			
+			}
+            )    
+        }     
+      
+           }
+		  localStorage.setItem("key",template);
+		  console.log(window.localStorage);
+		   	   		function template(type,target,date)
+		{
+		this.type=type;
+		this.target=target;
+		this.date=date;
+		
+		
+		}
+		
+	
+		
+		 $load1=[];
+		 var  store=window.localStorage;
+window.addEventListener("load", function(e){
+
+	 
+	var ee=new template(e.type, e.target,e.date=new Date);
+	
+	if(localStorage.key!="load")
+	{
+	
+	$load1.push(ee);
+	 localStorage.setItem("load",JSON.stringify($load1));
+	 }
+	       else
+             {
+              
+             $load1=JSON.parse(localStorage.getItem("load"));
+            $load1.push(ee);
+              localStorage.setItem("load",JSON.stringify($load1));
+             }
+	  console.log(localStorage.getItem("load"));
+  });
+  /////////////////
+  $unload=[];
+  window.addEventListener("unload", function(e){
+
+	 
+	var ee=new template(e.type, e.target,e.date=new Date);
+	
+	if(localStorage.key!="unload")
+	{
+	
+	$unload.push(ee);
+	 localStorage.setItem("unload",JSON.stringify($unload));
+	 }
+	       else
+             {
+              
+             $unload=JSON.parse(localStorage.getItem("unload"));
+            $unload.push(ee);
+              localStorage.setItem("load",JSON.stringify($unload));
+             }
+	  console.log(localStorage.getItem("unload"));
+  });
+  
+  ////////////////
+  $generate=[];
+  x.addEventListener("load", function(e){
+
+	 
+	var ee=new template(e.type, e.target,e.date=new Date);
+	
+	if(localStorage.key!="generate")
+	{
+	
+	$generate.push(ee);
+	 localStorage.setItem("generate",JSON.stringify($generate));
+	 }
+	       else
+             {
+              
+             $generate=JSON.parse(localStorage.getItem("generate"));
+            $generate.push(ee);
+              localStorage.setItem("generate",JSON.stringify($generate));
+             }
+	  console.log(localStorage.getItem("generate"));
+  });
+  /*
+   $letter=[];
+  el.addEventListener("letter", function(e){
+
+	 
+	var ee=new template(e.type, e.target,e.date=new Date);
+	
+	if(localStorage.key!="letter")
+	{
+	
+	$generate.push(ee);
+	 localStorage.setItem("letter",JSON.stringify($letter));
+	 }
+	       else
+             {
+              
+             $letter=JSON.parse(localStorage.getItem("letter"));
+            $letter.push(ee);
+              localStorage.setItem("letter",JSON.stringify($letter));
+             }
+	  console.log(localStorage.getItem("letter"));
+  });
+  
+  */
+	
+  
+
+function get()
+{
+
+  $.ajax({
+  "type":"POST",
+  "url":"aajj.php",
+ "data":{"load":JSON.stringify(JSON.parse(localStorage.getItem("load")))
+ },
+  
+  "success":function(response){
+
+   console.log(response);
+
+  localStorage.clear();
+  }
+  });
+  }
+setInterval(get,5000);
+function get2()
+{
+
+  $.ajax({
+  "type":"POST",
+  "url":"aajj.php",
+ "data":{"unload":JSON.stringify(JSON.parse(localStorage.getItem("unload")))
+ },
+  
+  "success":function(response){
+
+   console.log(response);
+
+  localStorage.clear();
+  }
+  });
+  }
+setInterval(get2,5000);
+function get3()
+{
+
+  $.ajax({
+  "type":"POST",
+  "url":"aajj.php",
+ "data":{"generate":JSON.stringify(JSON.parse(localStorage.getItem("generate")))
+ },
+  
+  "success":function(response){
+
+   console.log(response);
+
+  localStorage.clear();
+  }
+  });
+  }
+setInterval(get3,5000);
+/*
+function get4()
+{
+
+  $.ajax({
+  "type":"POST",
+  "url":"aajj.php",
+ "data":{"letter":JSON.stringify(JSON.parse(localStorage.getItem("letter")))
+ },
+  
+  "success":function(response){
+
+   console.log(response);
+
+  localStorage.clear();
+  }
+  });
+  }
+  
+setInterval(get4,5000);
+*/
+
+
+	  $.ajax({
+    "type": "GET",
+   "url": "aajj.php",
+   "data": {"tempal": ""},
+   "success": function(response){
+    	if(response){
+       var persons = JSON.parse(response);
+    	  console.log(persons);
+    	}
+    }
+ });
+	 
+         </script>
+    </body>
+</html>        
+         
